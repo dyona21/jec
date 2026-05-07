@@ -9,8 +9,12 @@
     <a routerLink="/elenco">Elenco</a>
     <a routerLink="/agenda">Agenda</a>
   </nav>
-
-  <button class="header-button">Sócio Torcedor</button>
+  <div class="header-actions">
+    <button class="botao-cadastro" (click)="abirCadastroSocio()">
+      Seja o 6º jogador
+    </button>
+    <button class="header-button">Sócio Torcedor</button>
+  </div>
 </header>
 <section class="section">
   <div class="destaque-rodada">

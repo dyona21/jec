@@ -11,6 +11,12 @@
     font-size: 30px;
 }
 
+.header-actions {
+    display: flex;
+    gap: 18px; 
+    align-items: center;
+}
+
 .header-titulo{
     color: #E30613;
     font-size: 24px;
@@ -46,6 +52,22 @@
 }
 
 .header-button:hover{
+    background-color: #b30000;
+    cursor: pointer;
+}
+
+.botao-cadastro{
+    background-color: #E20613;
+    color: #ffffff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botao-cadastro:hover{
     background-color: #b30000;
     cursor: pointer;
 }

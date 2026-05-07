@@ -1,0 +1,49 @@
+<form [formGroup]="socioCadastro" (ngSubmit)="onSubmit()">
+  <label>
+    Nome:
+    <input
+      type="text"
+      formControlName="nome"
+      placeholder="Seu nome..."
+      title="Digite seu nome: "
+      required
+    />
+  </label>
+
+  <label>
+    Email:
+    <input
+      type="text"
+      formControlName="email"
+      placeholder="Seu email..."
+      title="Digite seu email: "
+      required
+    />
+  </label>
+
+  <label>
+    CPF:
+    <input
+      formControlName="cpf"
+      type="text"
+      name="cpf"
+      placeholder="000.000.000-00"
+      inputmode="numeric"
+      pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+      title="Digite o CPF no formato 000.000.000-00"
+      required
+    />
+  </label>
+
+  <label>
+    Senha:
+    <input
+      type="text"
+      formControlName="senha"
+      placeholder="Sua senha..."
+      title="Digite sua senha aqui: "
+      required
+    />
+  </label>
+  <button type="submit" [disabled]="!socioCadastro.valid">Enviar</button>
+</form>
