@@ -1,26 +1,27 @@
-.login-container {
+.cadastro-container {
     background-color: #000000;
-    padding: 35px;
+    padding: 40px; 
     border-radius: 8px;
-    border-top: 4px solid #E30613; 
-    width: 90vw;
-    max-width: 400px; 
+    border-top: 4px solid #E30613;
+    width: 70vw; 
+    max-width: 800px; 
     margin: 0 auto;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-.login-titulo {
+.cadastro-titulo {
     color: #E30613;
     font-size: 24px;
     margin-bottom: 25px;
-    text-align: center;
+    text-align: left;
     font-weight: bold;
 }
 
-.form-login {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.cadastro-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px; 
+    align-items: start;
 }
 
 .form-label {
@@ -52,28 +53,41 @@
     color: #666666;
 }
 
-.botoes {
+.form-material, 
+.botao-enviar {
+    grid-column: span 2; 
+}
+
+.input-com-seta {
+    position: relative;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
-    gap: 15px;
-    margin-top: 15px;
+}
+
+.input-com-seta .form-input {
+    width: 100%;
+    cursor: pointer; 
+    padding-right: 40px; 
+}
+
+.seta-dropdown {
+    position: absolute;
+    right: 15px;
+    color: #E30613; 
+    font-size: 12px;
+    pointer-events: none; 
 }
 
 .botao-enviar {
     background-color: #E30613;
     color: #ffffff;
     border: none;
-    padding: 12px 24px;
+    padding: 14px 24px;
     border-radius: 4px;
     font-weight: bold;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.botao-enviar:hover:not(:disabled) {
-    background-color: #b30000;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.1s;
 }
 
 .botao-enviar:disabled {
@@ -82,18 +96,26 @@
     cursor: not-allowed;
 }
 
-.botao-fechar {
-    background-color:#E30613;
-    color: #ffffff;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: 15px;
-    cursor: pointer;
-    transition: all 0.3s;
+.botoes{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    grid-column: span 2;
 }
 
-.botao-fechar:hover {
+.botao-fechar{
+    background-color: #E30613;
+    color: #ffffff;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.botao-fechar:hover{
     background-color: #b30000;
+    cursor: pointer;
 }

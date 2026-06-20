@@ -6,14 +6,14 @@
 
   <nav class="header-nav">
     <a routerLink="/">Home</a>
-    <a routerLink="/elenco">Elenco</a>
-    <a routerLink="/agenda">Agenda</a>
+    <a routerLink="/">Elenco</a>
+    <a routerLink="/">Partidas</a>
   </nav>
   <div class="header-actions">
-    <button class="botao-cadastro" (click)="abirCadastroSocio()">
+    <button class="botao-cadastro" (click)="abrirCadastroSocio()">
       Seja o 6º jogador
     </button>
-    <button class="header-button">Sócio Torcedor</button>
+    <button class="header-button" (click)="abrirLogin()">Sócio Torcedor</button>
   </div>
 </header>
 <section class="section">
@@ -27,7 +27,8 @@
       <button class="botao-lances">
         <mat-icon>play_arrow</mat-icon> Assita aqui os lances
       </button>
-      <button class="botao-tabela">Ver tabela</button>
+      <a href="https://lnfoficial.com.br/classificacao/" target="_blank"><button class="botao-tabela">Ver
+          tabela</button></a>
     </div>
   </div>
 </section>

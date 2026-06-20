@@ -1,0 +1,53 @@
+<div class="cadastro-container">
+  <h2 class="cadastro-titulo">Cadastro de Sócio</h2>
+
+  <form class="cadastro-form" (ngSubmit)="salvar(formulario)" #formulario="ngForm">
+    <label class="form-label">
+      Nome:
+      <input class="form-input" name="nome" [(ngModel)]="model.nome" type="text" placeholder="Seu nome..."
+        title="Digite seu nome" required />
+    </label>
+
+    <label class="form-label">
+      Email:
+      <input class="form-input" name="email" [(ngModel)]="model.email" type="email" placeholder="Seu email..."
+        title="Digite seu email" required />
+    </label>
+
+    <label class="form-label">
+      CPF:
+      <input class="form-input" name="cpf" [(ngModel)]="model.cpf" type="text" placeholder="000.000.000-00"
+        inputmode="numeric" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite o CPF no formato 000.000.000-00"
+        required />
+    </label>
+
+    <label class="form-label">
+      Data Nascimento:
+      <input class="form-input" name="dataNascimento" [(ngModel)]="model.dataNascimento" type="date"
+        title="Sua data de nascimento" required />
+    </label>
+
+    <label class="form-label">
+      Modalidade Sócio:
+      <input class="form-input" name="modalidade" [(ngModel)]="planoSocio" type="text" required list="opcoes-planos"
+        placeholder="Selecione ou digite o plano...">
+      <datalist id="opcoes-planos">
+        <option value="Tradicional"></option>
+        <option value="Gold"></option>
+      </datalist>
+    </label>
+
+
+
+    <label class="form-label">
+      Senha:
+      <input class="form-input" name="senha" [(ngModel)]="model.senha" type="password" placeholder="Sua senha..."
+        title="Digite sua senha aqui" required />
+    </label>
+
+    <div class="botoes">
+      <button class="botao-enviar" type="submit" [disabled]="!formulario.valid">Confirmar Cadastro</button>
+      <button class="botao-fechar" type="button" (click)="fecharModal()">Fechar</button>
+    </div>
+  </form>
+</div>
