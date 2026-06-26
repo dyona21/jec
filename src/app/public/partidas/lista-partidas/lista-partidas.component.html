@@ -1,0 +1,68 @@
+<div class="links">
+    <nav class="header-nav">
+        <a routerLink="/">Home</a>
+        <a routerLink="/elenco">Elenco</a>
+        <a routerLink="/partidas">Partidas</a>
+    </nav>
+</div>
+<section>
+    <div class="painel-agenda">
+        <header class="cabecalho-agenda">
+            <div class="textos">
+                <h1 class="titulo-principal">AGENDA E RESULTADOS</h1>
+                <p class="descricao">Acompanhe a trajetória do Tricolor das Quadras. Confira as próximas batalhas e
+                    relembre nossas vitórias.</p>
+            </div>
+            <div class="barra-filtros-right">
+                <button [class.ativo]="filtroCompeticao === 'TODOS'" (click)="buscarJogos()">TODOS</button>
+                <button [class.ativo]="filtroCompeticao === 'LNF'" (click)="filtrarPorCompeticao('LNF')">LNF
+                    2026</button>
+
+                <button [class.ativo]="filtroCompeticao === 'CATARINENSE'"
+                    (click)="filtrarPorCompeticao('CATARINENSE')">CATARINENSE</button>
+            </div>
+        </header>
+
+        <h3 class="titulo-secao">
+            <span class="icone-play">▶</span> JOGOS
+        </h3>
+
+        <div class="lista-partidas">
+            <div class="card-partida" *ngFor="let partida of partidasExibidas">
+
+                <div class="col-data">
+                    <span class="dia">{{ partida.data_hora | date:'dd' }}</span>
+                    <span class="mes">{{ partida.data_hora | date:'MMMM' | uppercase }}</span>
+                    <span class="detalhes">{{ partida.data_hora | date:'HH:mm' }} • {{ partida.local }}</span>
+                </div>
+
+                <div class="col-confronto">
+                    <div class="time time-casa">
+                        <span class="nome-time-destaque">JEC/KRONA</span>
+                    </div>
+
+                    <div class="versus-area">
+                        <span class="vs placar" *ngIf="partida.gols_jec > 0 || partida.gols_adversa > 0">
+                            {{ partida.gols_jec }} x {{ partida.gols_adversa }}
+                        </span>
+                        <span class="vs" *ngIf="partida.gols_jec === 0 && partida.gols_adversa === 0">
+                            VS
+                        </span>
+                        <span class="badge-competicao">{{ partida.competicao_nome }}</span>
+                    </div>
+
+                    <div class="time time-fora">
+                        <span class="nome-time-destaque">{{ partida.adversario }}</span>
+                    </div>
+                </div>
+
+                <div class="col-acao">
+                    <button class="btn-acao btn-aviso">VER DETALHES</button>
+                    <span class="transmissao">{{ partida.descricao }}</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>

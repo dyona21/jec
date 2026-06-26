@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Atleta } from 'src/app/public/model/atleta';
+import { Atleta } from 'src/app/public/models/atleta';
 
 @Injectable({
     providedIn: 'root'
 }) export class AtletaService {
     constructor(private http: HttpClient) { }
 
-    urlApi = 'http://localhost:4200/api/v1/atletas/';
+    urlApi = 'http://localhost:8000/api/v1/atletas/';
 
     buscarAtletas(): Observable<Atleta[]> {
         return this.http.get<Atleta[]>(`${this.urlApi}`);

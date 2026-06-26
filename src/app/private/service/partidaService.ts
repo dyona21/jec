@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { ReturnStatement } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Partida } from 'src/app/public/model/partida';
+import { Partida } from 'src/app/public/models/partida';
 
 @Injectable({
     providedIn: 'root'

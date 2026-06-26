@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PlanoSocio } from '../model/palnoSocio';
+import { PlanoSocio } from '../models/palnoSocio';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

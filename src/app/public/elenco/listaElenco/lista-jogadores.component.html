@@ -1,0 +1,60 @@
+<div class="links">
+    <nav class="header-nav">
+        <a routerLink="/">Home</a>
+        <a routerLink="/elenco">Elenco</a>
+        <a routerLink="/partidas">Partidas</a>
+    </nav>
+</div>
+<div class="painel-elenco">
+    <div class="cabecalho-secao">
+        <h1 class="subtitulo-vermelho">TEMPORADA 2026</h1>
+        <h2 class="titulo-principal">ATLETAS</h2>
+    </div>
+
+    <nav class="barra-filtros">
+        <button [class.ativo]="filtroPosicao === 'TODOS'" (click)="filtrarPorPosicao('TODOS')">TODOS</button>
+        <button [class.ativo]="filtroPosicao === 'GOLEIROS'" (click)="filtrarPorPosicao('GOLEIROS')">GOLEIROS</button>
+        <button [class.ativo]="filtroPosicao === 'FIXOS'" (click)="filtrarPorPosicao('FIXOS')">FIXOS</button>
+        <button [class.ativo]="filtroPosicao === 'ALAS'" (click)="filtrarPorPosicao('ALAS')">ALAS</button>
+        <button [class.ativo]="filtroPosicao === 'PIVÔS'" (click)="filtrarPorPosicao('PIVÔS')">PIVÔS</button>
+    </nav>
+
+    <div class="grid-jogadores">
+        <div class="card-jogador" *ngFor="let jogador of jogadoresExibidos">
+
+            <div class="area-imagem">
+                <span class="numero-fundo">{{ jogador.numero }}</span>
+                <img [src]="jogador.foto" [alt]="jogador.nome" class="foto-atleta"
+                    onerror="this.src='assets/placeholder.png'">
+            </div>
+
+            <div class="area-dados">
+                <div class="linha-topo">
+                    <h3 class="nome">{{ jogador.nome }}</h3>
+                    <span class="numero-destaque">{{ jogador.numero }}</span>
+                </div>
+
+                <p class="posicao">{{ jogador.posicao }}</p>
+
+                <hr class="divisor">
+
+                <div class="estatisticas">
+                    <div class="stat-box">
+                        <span class="stat-label">JOGOS</span>
+                        <span class="stat-valor">{{ jogador.partidas }}</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">GOLS</span>
+                        <span class="stat-valor">{{ jogador.gols }}</span>
+                    </div>
+
+                    <div class="stat-box">
+                        <span class="stat-label">Idade</span>
+                        <span class="stat-valor">{{ jogador.data_nascimento | idade }}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

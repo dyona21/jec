@@ -1,0 +1,121 @@
+.cadastro-container {
+    background-color: #000000;
+    padding: 40px; 
+    border-radius: 8px;
+    border-top: 4px solid #E30613;
+    width: 70vw; 
+    max-width: 800px; 
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.cadastro-titulo {
+    color: #E30613;
+    font-size: 24px;
+    margin-bottom: 25px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.cadastro-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px; 
+    align-items: start;
+}
+
+.form-label {
+    color: #cccccc;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.form-input {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid #333333;
+    padding: 12px 15px;
+    border-radius: 4px;
+    font-size: 15px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #E30613;
+    box-shadow: 0 0 5px rgba(227, 6, 19, 0.5);
+}
+
+.form-input::placeholder {
+    color: #666666;
+}
+
+.form-material, 
+.botao-enviar {
+    grid-column: span 2; 
+}
+
+.input-com-seta {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-com-seta .form-input {
+    width: 100%;
+    cursor: pointer; 
+    padding-right: 40px; 
+}
+
+.seta-dropdown {
+    position: absolute;
+    right: 15px;
+    color: #E30613; 
+    font-size: 12px;
+    pointer-events: none; 
+}
+
+.botao-enviar {
+    background-color: #E30613;
+    color: #ffffff;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.botao-enviar:disabled {
+    background-color: #555555;
+    color: #999999;
+    cursor: not-allowed;
+}
+
+.botoes{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    grid-column: span 2;
+}
+
+.botao-fechar{
+    background-color: #E30613;
+    color: #ffffff;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.botao-fechar:hover{
+    background-color: #b30000;
+    cursor: pointer;
+}

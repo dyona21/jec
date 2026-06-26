@@ -1,0 +1,40 @@
+<div class="cadastro-container">
+    <h2 class="cadastro-titulo">Cadastro de Sócio</h2>
+
+    <form class="cadastro-form" (ngSubmit)="salvar(formulario)" #formulario="ngForm">
+        <label class="form-label">
+            Nome:
+            <input class="form-input" name="nome" [(ngModel)]="model.pessoa.nome" type="text" placeholder="Seu nome..."
+                title="Digite seu nome" required />
+        </label>
+
+        <label class="form-label">
+            Data Nascimento:
+            <input class="form-input" name="dataNascimento" [(ngModel)]="model.dataNascimento" type="date"
+                title="Sua data de nascimento" required />
+        </label>
+
+        <label class="form-label">
+            Posicao:
+            <input class="form-input" name="posicao" [(ngModel)]="model.posicao" type="posicao" placeholder="Posicao..."
+                title="Digite a posicao do jogador..." required />
+        </label>
+
+        <label class="form-label">
+            Número de partidas:
+            <input class="form-input" name="numero partidas" [(ngModel)]="model.numeroPartidas" type="text"
+                placeholder="Partidas..." inputmode="numeric" title="Digite o número de partidas..." />
+        </label>
+
+        <label class="form-label">
+            Número de gols:
+            <input class="form-input" name="numero gols" [(ngModel)]="model.numeroGols" type="text"
+                placeholder="Gols..." inputmode="numeric" title="Digite o número de gols..." />
+        </label>
+
+        <div class="botoes">
+            <button class="botao-enviar" type="submit" [disabled]="!formulario.valid">Confirmar Cadastro</button>
+            <button class="botao-fechar" type="button" (click)="fecharModal()">Fechar</button>
+        </div>
+    </form>
+</div>

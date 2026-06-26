@@ -7,9 +7,22 @@ import { CadastroSocioComponent } from './cadastroSocio/cadastro-socio.component
 import { FormsModule } from '@angular/forms';
 import { MatAutocompleteModule, MatDialogModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { LoginComponent } from './login/login.component';
+import { ListaJogadoresComponent } from './elenco/listaElenco/lista-jogadores.component';
+import { CadastroJogadorComponent } from './elenco/cadastroJogadores/cadastro-jogador.component';
+import { HttpClientModule } from '@angular/common/http';
+import { IdadePipe } from '../pipes/idade.pipe';
+import { ListaPartidasComponent } from './partidas/lista-partidas/lista-partidas.component';
 
 @NgModule({
-  declarations: [InicioComponent, CadastroSocioComponent, LoginComponent],
+  declarations: [
+    InicioComponent,
+    CadastroSocioComponent,
+    LoginComponent,
+    ListaJogadoresComponent,
+    CadastroJogadorComponent,
+    IdadePipe,
+    ListaPartidasComponent
+  ],
   imports: [
     CommonModule,
     PublicRoutingModule,
@@ -18,7 +31,8 @@ import { LoginComponent } from './login/login.component';
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
   entryComponents: [CadastroSocioComponent, LoginComponent],
   exports: []

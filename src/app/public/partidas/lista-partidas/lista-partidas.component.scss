@@ -1,0 +1,347 @@
+/* Variáveis de cor para facilitar */
+$cor-fundo: #111111;
+$cor-card: #222222;
+$cor-vermelho: #E20613;
+$cor-texto-claro: #FFFFFF;
+$cor-texto-escuro: #AAAAAA;
+
+.links{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 30px 20px 1px 15px;
+  background-color: $cor-fundo ;
+}
+
+.coelho{
+    font-size: 30px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 18px; 
+    align-items: center;
+}
+
+.header-titulo{
+    color: #E30613;
+    font-size: 24px;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-nav a {
+    color: #cccccc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.header-nav a:hover {
+    color: #E20613;
+}
+.header-button{
+    background-color: #E20613;
+    color: #ffffff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.header-button:hover{
+    background-color: #b30000;
+    cursor: pointer;
+}
+
+.botao-cadastro{
+    background-color: #E20613;
+    color: #ffffff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botao-cadastro:hover{
+    background-color: #b30000;
+    cursor: pointer;
+}
+
+.barra-filtros-right button {
+    background-color: transparent;
+    color: #ffffff; 
+    border: 1px solid #333333; /* Borda cinza escuro */
+    padding: 8px 24px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse por cima (opcional, mas fica legal) */
+.barra-filtros-right button:hover {
+    border-color: #E30613;
+    color: #E30613;
+}
+
+.barra-filtros-right button.ativo {
+    color: #E30613; /* Texto vermelho JEC */
+    border: 1px solid #E30613; /* Borda vermelha */
+}
+
+.painel-agenda {
+  padding: 40px;
+  background-color: $cor-fundo;
+  color: $cor-texto-claro;
+}
+
+.cabecalho-agenda {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+
+  .titulo-principal {
+    font-size: 3rem;
+    font-weight: 900;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+  }
+
+  .descricao {
+    color: $cor-texto-escuro;
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0;
+  }
+}
+
+.barra-filtros-right {
+  display: flex;
+  gap: 15px;
+
+  button {
+    background-color: transparent;
+    color: $cor-texto-claro;
+    border: 1px solid #444;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      border-color: $cor-vermelho;
+    }
+
+    &.ativo {
+      border-color: $cor-vermelho;
+      color: $cor-vermelho;
+    }
+  }
+}
+
+.titulo-secao {
+  color: $cor-vermelho;
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .icone-play {
+    font-size: 1rem;
+  }
+}
+
+.lista-partidas {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card-partida {
+  background-color: $cor-card;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  border-radius: 4px;
+}
+
+.col-data {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+
+  .dia {
+    color: $cor-vermelho;
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .mes {
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+
+  .detalhes {
+    color: $cor-texto-escuro;
+    font-size: 0.85rem;
+  }
+}
+
+/* Coluna Central com Tipografia Forte */
+.col-confronto {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-grow: 1;
+  justify-content: center;
+
+  .time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px; 
+    text-align: center;
+
+    .nome-time-destaque {
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    }
+  }
+
+  .versus-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    .vs {
+      color: $cor-vermelho;
+      font-size: 1.3rem;
+      font-style: italic;
+      font-weight: 900;
+    }
+    
+    .placar {
+      font-size: 2.2rem;
+      color: #fff;
+      font-style: normal;
+      letter-spacing: 3px;
+    }
+
+    .badge-competicao {
+      background-color: #333;
+      color: #aaa;
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid #444;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.col-acao {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  min-width: 250px;
+
+  .btn-acao {
+    padding: 12px 30px;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 2px;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
+  .btn-aviso {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #555;
+
+    &:hover {
+      background-color: #333;
+    }
+  }
+
+  .transmissao {
+    color: $cor-texto-escuro;
+    font-size: 0.8rem;
+  }
+}
+
+.footer{
+    border-top: 3px outset #E30613;
+    width: 100%;
+    height: 15vh;
+}
+
+.container-footer{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px 20px 0px;
+}
+
+.dados {
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  padding: 20px 0px 50px 10px;
+  position: relative; 
+}
+
+.links-footer {
+  display: flex;
+  gap: 55px;
+  position: absolute;
+  left: 50%;                     
+  transform: translateX(-50%);   
+}
+
+.links-footer a{
+    color: #cccccc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.links-footer a:hover{
+    color:#E30613;
+    cursor: pointer;
+}
+
+.copy-rights{
+    /* Cima  Dir  Baixo Esq */
+    padding: 20px 0px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.copy-rights p{
+    font-size: 12px;
+}
