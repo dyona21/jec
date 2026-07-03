@@ -1,0 +1,26 @@
+<div class="login-container">
+    <h2 class="login-titulo">Login do Sócio</h2>
+
+    <form class="form-login" (ngSubmit)="fazerLogin(form)" #form="ngForm">
+        <div class="alerta-erro" *ngIf="mensagemErro">
+            {{ mensagemErro }}
+        </div>
+        <label class="form-label">
+            CPF:
+            <input class="form-input" name="cpf" [(ngModel)]="model.cpf" type="text" placeholder="000.000.000-00"
+                mask="000.000.000-00" [dropSpecialCharacters]="true" required />
+        </label>
+
+        <label class="form-label">
+            Senha:
+            <input class="form-input" type="password" name="senha" [(ngModel)]="model.senha"
+                placeholder="Digite sua senha aqui..." required>
+        </label>
+
+        <div class="botoes">
+            <button class="botao-enviar" type="submit" [disabled]="!form.valid">Entrar</button>
+            <button class="botao-fechar" type="button" (click)="fecharModal()">Fechar</button>
+        </div>
+
+    </form>
+</div>

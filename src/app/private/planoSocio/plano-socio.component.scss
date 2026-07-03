@@ -1,0 +1,183 @@
+ body {
+    margin: 0;
+    min-height: 100vh;
+    /* fundo de exemplo só pra mostrar o blur -
+       na tua página real quem aparece borrado
+       atrás é o conteúdo que já existe ali */
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(190, 30, 30, 0.45), transparent 22%),
+      radial-gradient(circle at 82% 12%, rgba(200, 200, 200, 0.25), transparent 26%),
+      radial-gradient(circle at 55% 75%, rgba(120, 120, 120, 0.35), transparent 30%),
+      radial-gradient(circle at 25% 88%, rgba(210, 210, 210, 0.2), transparent 24%),
+      radial-gradient(circle at 90% 60%, rgba(190, 30, 30, 0.3), transparent 22%),
+      linear-gradient(160deg, #3a3a3a, #111111 75%);
+    background-attachment: fixed;
+  }
+ 
+  /* ==================================================
+     Modalidade de Sócio — estilos do formulário
+     Paleta baseada no card "Cadastro de Sócio"
+     (fundo preto + detalhes em vermelho)
+  ================================================== */
+ 
+  .modalidade-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+  }
+ 
+  .modalidade-container {
+    --socio-vermelho: #e2231a;
+    --socio-vermelho-hover: #b91c14;
+    --socio-fundo: #0d0d0d;
+    --socio-fundo-input: #1c1c1c;
+    --socio-borda: #2e2e2e;
+    --socio-texto: #f5f5f5;
+    --socio-placeholder: #8f8f8f;
+ 
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 36px 40px;
+    background-color: var(--socio-fundo);
+    border: 2px solid var(--socio-vermelho);
+    border-radius: 18px;
+    box-shadow: 0 0 45px rgba(226, 35, 26, 0.18);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+ 
+  .modalidade-container *,
+  .modalidade-container *::before,
+  .modalidade-container *::after {
+    box-sizing: border-box;
+  }
+ 
+  .modalidade-titulo {
+    margin: 0 0 22px;
+    color: var(--socio-vermelho);
+    font-size: 26px;
+    font-weight: 700;
+  }
+ 
+  .modalidade-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 24px;
+  }
+ 
+  .modalidade-subtitulo {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: var(--socio-texto);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+ 
+  .modalidade-erro {
+    grid-column: 1 / -1;
+    padding: 12px 16px;
+    background-color: rgba(226, 35, 26, 0.12);
+    border: 1px solid var(--socio-vermelho);
+    border-radius: 10px;
+    color: #ff8a80;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+ 
+  .modalidade-label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--socio-texto);
+    font-size: 14px;
+    font-weight: 600;
+  }
+ 
+  .modalidade-input {
+    width: 100%;
+    padding: 12px 14px;
+    background-color: var(--socio-fundo-input);
+    border: 1px solid var(--socio-borda);
+    border-radius: 10px;
+    color: var(--socio-texto);
+    font-size: 15px;
+    font-weight: 400;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+ 
+  .modalidade-input::placeholder {
+    color: var(--socio-placeholder);
+  }
+ 
+  .modalidade-input:focus {
+    border-color: var(--socio-vermelho);
+    box-shadow: 0 0 0 3px rgba(226, 35, 26, 0.22);
+  }
+ 
+  .modalidade-botoes {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 6px;
+  }
+ 
+  .botao-enviar,
+  .botao-fechar {
+    padding: 12px 28px;
+    background-color: var(--socio-vermelho);
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+  }
+ 
+  .botao-enviar:hover,
+  .botao-fechar:hover {
+    background-color: var(--socio-vermelho-hover);
+  }
+ 
+  .botao-enviar:active,
+  .botao-fechar:active {
+    transform: translateY(1px);
+  }
+ 
+  .botao-enviar:focus-visible,
+  .botao-fechar:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+  }
+ 
+  @media (max-width: 560px) {
+    .modalidade-container {
+      padding: 28px 22px;
+    }
+ 
+    .modalidade-form {
+      grid-template-columns: 1fr;
+    }
+ 
+    .modalidade-botoes {
+      flex-direction: column;
+    }
+ 
+    .botao-enviar,
+    .botao-fechar {
+      width: 100%;
+    }
+  }

@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 
-// === REGISTRE O IDIOMA PORTUGUÊS ===
 registerLocaleData(localePt);
 
 @NgModule({
@@ -24,7 +23,6 @@ registerLocaleData(localePt);
     HttpClientModule
   ],
   providers: [
-    // === ADICIONE ESTE PROVIDER PARA DEFINIR O PORTUGUÊS COMO PADRÃO ===
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]

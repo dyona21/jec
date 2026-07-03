@@ -2,7 +2,7 @@ import { Component, ViewContainerRef } from '@angular/core';
 import { NavegarService } from 'src/app/core/services/navegar-service';
 import { CadastroSocioComponent } from '../../cadastroSocio/cadastro-socio.component';
 import { MatDialog } from '@angular/material';
-import { LoginComponent } from '../../login/login.component';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
     selector: 'app-inicio',

@@ -1,0 +1,191 @@
+.links{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 30px 20px 1px 15px;
+  background-color:  #161616; ;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-nav a {
+    color: #cccccc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.header-nav a:hover {
+    color: #E20613;
+}
+
+$cor-fundo: #161616;
+$cor-texto-principal: #ffffff;
+$cor-texto-secundario: #cccccc;
+$cor-vermelho: #E30613;
+$cor-laranja: #ff6b4a; 
+$cor-borda: #333333;
+$cor-box: #242424;
+
+.contato-container {
+  background-color: $cor-fundo;
+  color: $cor-texto-principal;
+  padding: 60px 8%; 
+  font-family: sans-serif;
+  min-height: calc(100vh - 80px); 
+  
+  .contato-header {
+    margin-bottom: 60px;
+
+    .titulo {
+      font-size: 2.8rem;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      margin: 0 0 10px 0;
+      letter-spacing: 2px;
+    }
+
+    .linha-vermelha {
+      height: 4px;
+      width: 130px;
+      background-color: $cor-vermelho;
+    }
+  }
+
+  .contato-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; 
+    gap: 80px;
+    max-width: 1400px; 
+    margin: 0 auto;
+
+    .coluna-info {
+      display: flex;
+      flex-direction: column;
+      gap: 45px;
+    }
+
+    .coluna-mapa {
+      width: 100%;
+      height: 100%;
+      
+      .mapa-wrapper {
+        width: 100%;
+        height: 100%;
+        min-height: 450px;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        
+        iframe {
+          width: 100%;
+          height: 100%;
+          filter: grayscale(100%) invert(90%) contrast(85%);
+        }
+      }
+    }
+
+    .bloco-info {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+
+      .subtitulo {
+        color: $cor-laranja;
+        font-size: 1.1rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0;
+
+        mat-icon { font-size: 1.4rem; width: 1.4rem; height: 1.4rem; }
+
+        &.mini {
+          font-size: 0.9rem;
+          margin-bottom: -8px;
+        }
+      }
+
+      .endereco-box {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background-color: $cor-box;
+        padding: 20px;
+        border-radius: 6px;
+        border-left: 4px solid $cor-vermelho; 
+
+        .icone-box { color: $cor-laranja; }
+        .texto-endereco {
+          strong {
+            color: $cor-laranja;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 6px;
+          }
+          p {
+            color: $cor-texto-secundario;
+            font-size: 1rem;
+            margin: 0;
+            line-height: 1.5;
+          }
+        }
+      }
+
+      .dado-contato {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        color: $cor-texto-principal;
+        font-size: 1.1rem;
+        margin: 0;
+
+        mat-icon { color: $cor-laranja; font-size: 1.4rem; width: 1.4rem; height: 1.4rem; }
+      }
+
+      .redes-sociais {
+        display: flex;
+        gap: 15px;
+
+        .btn-social {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 50px;
+          height: 50px;
+          border: 1px solid $cor-borda;
+          border-radius: 6px;
+          color: $cor-texto-principal;
+          text-decoration: none;
+          transition: all 0.3s ease;
+
+          mat-icon { font-size: 1.4rem; width: 1.4rem; height: 1.4rem; }
+
+          &:hover {
+            border-color: $cor-vermelho;
+            color: $cor-vermelho;
+            background-color: rgba(227, 6, 19, 0.1); 
+            transform: translateY(-3px); 
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 960px) {
+    .contato-content {
+      grid-template-columns: 1fr; 
+      gap: 60px;
+    }
+    .coluna-mapa .mapa-wrapper iframe {
+      min-height: 350px;
+    }
+  }
+}

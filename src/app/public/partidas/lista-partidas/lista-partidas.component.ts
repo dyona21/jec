@@ -24,6 +24,7 @@ export class ListaPartidasComponent implements OnInit {
         this.filtroCompeticao = 'TODOS';
 
         const next = (retorno: any) => {
+            console.log('partidas', retorno);
             this.listaPartidas = retorno.sort((a, b) => {
                 const tempoA = new Date(a.data_hora).getTime();
                 const tempoB = new Date(b.data_hora).getTime();

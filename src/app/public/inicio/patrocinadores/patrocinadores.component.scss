@@ -1,0 +1,146 @@
+.links{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 30px 20px 1px 15px;
+  background-color:  #161616; ;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-nav a {
+    color: #cccccc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.header-nav a:hover {
+    color: #E20613;
+}
+.header-button{
+    background-color: #E20613;
+    color: #ffffff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.header-button:hover{
+    background-color: #b30000;
+    cursor: pointer;
+}
+
+.container-principal {
+  padding: 60px 20px;
+  background-color: #161616; // Fundo escuro para destacar as logos
+  color: #ffffff;
+  text-align: center;
+  font-family: sans-serif;
+
+  h1 {
+    color: #E30613; // Vermelho do JEC
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: #cccccc;
+    max-width: 650px;
+    margin: 0 auto 50px auto;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  // === DESTAQUE: PATROCINADOR MASTER ===
+  .master {
+    margin-bottom: 60px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.03); // Fundo sutil para destacar a área
+    border-radius: 12px;
+    border: 1px solid #333333;
+    display: inline-block; // Mantém a caixa ajustada ao conteúdo
+
+    h3 {
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    img {
+      max-width: 100%;
+      width: 350px; // Tamanho bem maior para o Master
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(227, 6, 19, 0.15); // Sombra vermelha leve
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+  }
+
+  // === GRID DOS OUTROS PATROCINADORES ===
+  // Como a div dos outros patrocinadores não tem classe, 
+  // usamos o seletor de último filho no SCSS para alcançá-la
+  > div:last-child {
+    
+    // O Flexbox faz os itens ficarem lado a lado e quebra a linha quando falta espaço
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    // Forçamos o título a ocupar 100% da linha para ficar em cima das logos
+    h4 {
+      width: 100%;
+      font-size: 1.2rem;
+      color: #cccccc;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .imagem-patrocinador {
+      background-color: #ffffff; // Fundo branco obriga a logo a aparecer bem
+      padding: 15px;
+      border-radius: 8px;
+      width: 160px; // Caixas de tamanho padronizado
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease;
+
+      // Efeito visual: Logos começam cinzas e ficam coloridas no hover
+      filter: grayscale(100%);
+      opacity: 0.7;
+
+      &:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: translateY(-5px); // Levanta o card
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain; // Garante que a imagem não estique ou amasse
+      }
+    }
+  }
+}

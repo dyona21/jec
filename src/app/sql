@@ -1,0 +1,119 @@
+-- ==============================================================================
+-- 1. CRIAÇÃO DAS TABELAS BASE (Não dependem de outras tabelas)
+-- ==============================================================================
+
+CREATE TABLE pessoa (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(11) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE, 
+    senha VARCHAR(255),        
+    data_nascimento DATE NOT NULL,
+    adm BOOLEAN 
+);
+
+CREATE TABLE plano_socio (
+    id SERIAL PRIMARY KEY,
+    nome_plano VARCHAR(50) NOT NULL,
+    valor NUMERIC(10, 2) NOT NULL, 
+    vantagens TEXT,                 -- Antiga coluna 'beneficios'
+    beneficio TEXT,                 -- Coluna nova adicionada
+    forma_pagamento VARCHAR(255)    -- Coluna nova adicionada
+);
+
+CREATE TABLE competicao (
+    id SERIAL PRIMARY KEY,
+    nome_competicao VARCHAR(100) NOT NULL,
+    ano INTEGER NOT NULL,
+    foto VARCHAR(255), 
+    descricao TEXT
+);
+
+-- ==============================================================================
+-- 2. CRIAÇÃO DAS TABELAS ESPECIALIZADAS (Dependem de Pessoa ou Plano)
+-- ==============================================================================
+
+CREATE TABLE atleta (
+    id_pessoa INTEGER PRIMARY KEY, 
+    posicao VARCHAR(50) NOT NULL,
+    foto VARCHAR(255), 
+    partidas INTEGER DEFAULT 0,
+    CONSTRAINT fk_atleta_pessoa FOREIGN KEY (id_pessoa) REFERENCES pessoa (id) ON DELETE CASCADE
+);
+
+CREATE TABLE socio (
+    id_pessoa INTEGER PRIMARY KEY, 
+    id_plano INTEGER NOT NULL,
+    CONSTRAINT fk_socio_pessoa FOREIGN KEY (id_pessoa) REFERENCES pessoa (id) ON DELETE CASCADE,
+    CONSTRAINT fk_socio_plano FOREIGN KEY (id_plano) REFERENCES plano_socio (id) ON DELETE RESTRICT
+);
+
+-- ==============================================================================
+-- 3. CRIAÇÃO DA TABELA PARTIDA (Depende de Competição)
+-- ==============================================================================
+
+CREATE TABLE partida (
+    id SERIAL PRIMARY KEY,
+    adversario VARCHAR(100) NOT NULL,
+    data_hora TIMESTAMP NOT NULL, 
+    local VARCHAR(150) NOT NULL,
+    gols_jec INTEGER DEFAULT 0,
+    gols_adversa INTEGER DEFAULT 0,
+    descricao TEXT,
+    link_dos_lances VARCHAR(255), -- Coluna nova adicionada
+    id_competicao INTEGER NOT NULL,
+    CONSTRAINT fk_partida_competicao FOREIGN KEY (id_competicao) REFERENCES competicao (id) ON DELETE CASCADE
+);
+
+-- ==============================================================================
+-- 4. INSERÇÃO DE DADOS (POPULANDO O BANCO)
+-- ==============================================================================
+
+-- 4.1 Planos de Sócio
+INSERT INTO plano_socio (nome_plano, valor, vantagens) 
+VALUES ('Sócio JEC Futsal Gold', 45.00, 'Entrada liberada nos jogos no Centreventos e descontos em produtos');
+
+-- 4.2 Pessoas (Admin, Sócios e Atletas unificados para evitar conflitos de ID)
+INSERT INTO pessoa (nome, cpf, email, senha, data_nascimento, adm) 
+VALUES 
+('Dyonatan', '04248217023', 'admin@jec.com', 'senha123', '2003-12-04', TRUE), -- ID 1 (Admin)
+('Kevin Farias', '55566677788', 'kevin@jec.com', NULL, '1989-04-15', FALSE),    -- ID 2 (Atleta)
+('João', '99988877766', 'joao@email.com', 'senha123', '1995-08-20', FALSE),     -- ID 3 (Sócio)
+('Matheus', '10120230340', 'mat@jec.com', NULL, '1999-01-01', FALSE),           -- ID 4 (Atleta)
+('Henrique', '20230340450', 'leo@jec.com', NULL, '1998-02-02', FALSE),          -- ID 5 (Atleta)
+('Robinho', '30340450560', 'dieguinho@jec.com', NULL, '1995-06-22', FALSE),     -- ID 6 (Atleta)
+('Rufino', '40450560670', 'eder@jec.com', NULL, '1998-06-29', FALSE);           -- ID 7 (Atleta)
+
+-- 4.3 Sócios (Associando o João - ID 3 - ao Plano Gold - ID 1)
+INSERT INTO socio (id_pessoa, id_plano)
+VALUES (3, 1);
+
+-- 4.4 Atletas (Associando os IDs inseridos na tabela pessoa)
+INSERT INTO atleta (id_pessoa, posicao, foto, partidas)
+VALUES 
+(2, 'Ala', '/assets/img/atletas/kevin.jpg', 150),
+(4, 'Goleiro', 'C:\Users\dyona\Downloads\jec_jogadores.zip\jec_jogadores\Alas\Matheus.png', 104),
+(5, 'Fixo', 'C:\Users\dyona\Downloads\jec_jogadores.zip\jec_jogadores\Fixos\Henrique.png', 82),
+(6, 'Ala', 'C:\Users\dyona\Downloads\jec_jogadores.zip\jec_jogadores\Alas\Robinho.png', 100),
+(7, 'Pivô', 'C:\Users\dyona\Downloads\jec_jogadores.zip\jec_jogadores\Pivos\Rufino.png', 18);
+
+-- 4.5 Competições (Unificadas)
+INSERT INTO competicao (nome_competicao, ano, foto, descricao) 
+VALUES 
+('Liga Nacional de Futsal (LNF)', 2026, '/assets/img/lnf.jpg', 'Principal campeonato do Brasil - Edição 2026'), -- ID 1
+('Campeonato Catarinense', 2026, NULL, 'Campeonato Catarinense Série Ouro'); -- ID 2
+
+-- 4.6 Partidas
+INSERT INTO partida (adversario, data_hora, local, gols_jec, gols_adversa, descricao, id_competicao, link_dos_lances) 
+VALUES 
+-- Jogos da LNF 2026 (id_competicao = 1)
+('Magnus Futsal', '2026-05-25 19:30:00', 'Centreventos Cau Hansen', 0, 0, 'Jogo de ida das oitavas', 1, NULL),
+('ACBF', '2026-05-01 18:00:00', 'Centreventos Cau Hansen', 5, 0, 'Grande vitória fora de casa! Transmissão: LNF TV', 1, 'https://www.youtube.com/watch?v=bZPoe6Ujtsk'),
+('Pato', '2026-04-16 20:00:00', 'Centreventos Cau Hansen', 5, 0, 'Transmissão: LNF TV / SporTV', 1, 'https://www.youtube.com/watch?v=oW63J0ReACw'),
+('Marreco', '2026-04-03 20:30:00', 'Complexo Esportivo Arrudão', 6, 0, 'Transmissão: LNF TV', 1, 'https://www.youtube.com/watch?v=eHp_WCdJVpk'),
+('Corinthians', '2026-03-28 20:00:00', 'Centreventos Cau Hansen', 4, 1, 'Transmissão: LNF TV', 1, 'https://www.youtube.com/watch?v=-bk2NV0Nrjw'),
+
+-- Jogos do Campeonato Catarinense (id_competicao = 2)
+('Lages Futsal', '2026-05-29 20:00:00', 'Centreventos Cau Hansen', 7, 1, 'Grande Atuação da Equipe!', 2, 'https://www.youtube.com/watch?v=vs8SwSKEy14'),
+('São Lourenço', '2026-06-16 19:30:00', 'Ginásio Municipal Adilso da Groce', 5, 5, 'Empate Emocionante!', 2, 'https://www.youtube.com/watch?v=VbdYmtlnu0s'),
+('Chapecoense', '2026-04-11 19:00:00', 'Ginásio SER Aurora', 3, 3, 'Empate com a Forte Equipe de Chapecó!', 2, 'https://www.youtube.com/watch?v=hrGBJnq6wuU');

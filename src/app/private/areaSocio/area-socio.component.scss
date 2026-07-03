@@ -1,0 +1,410 @@
+$cor-fundo: #111111;
+$cor-card: #1E1E1E;
+$cor-vermelho: #E30613;
+$cor-texto-branco: #FFFFFF;
+$cor-texto-cinza: #AAAAAA;
+$cor-borda: #2A2A2A;
+
+.socio-container {
+  padding: 40px;
+  background-color: $cor-fundo;
+  color: $cor-texto-branco;
+  font-family: sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 10px;
+}
+
+.header-nav a {
+    color: #cccccc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.header-nav a:hover {
+    color: #E20613;
+}
+
+.perfil-card {
+  background-color: $cor-card;
+  border-left: 6px solid $cor-vermelho;
+  border-radius: 4px;
+  padding: 30px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+
+  .perfil-info-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    z-index: 2; 
+  }
+
+ .btn-sair {
+    position: absolute;
+    top: 7px;          
+    right: 42px; 
+    
+    background: transparent;
+    color: #a0a0a0;     
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;          
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+
+.btn-sair:hover {
+    color: #ff0000; 
+}
+
+.btn-sair mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+  .foto-box {
+    width: 120px; 
+    height: 120px;
+    border: 2px solid #ff0000; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.foto-box img {
+    width: 100%;
+    height: 100%;
+    
+    object-fit: cover; 
+    
+    object-position: top center; 
+}
+
+  .dados-socio {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+
+    .badge-status {
+      background-color: $cor-vermelho;
+      font-size: 0.65rem;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+
+    .nome-socio {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: 1px;
+    }
+
+    .id-socio {
+      color: $cor-vermelho;
+      font-weight: bold;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+  }
+
+  .btn-vermelho {
+    background-color: $cor-vermelho;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 2;
+    transition: 0.3s;
+
+    &:hover { background-color: #b30000; }
+  }
+
+  .marca-dagua {
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 8rem;
+    font-weight: 900;
+    font-style: italic;
+    color: white;
+    opacity: 0.03;
+    pointer-events: none;
+  }
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.col-esquerda {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .card-plano {
+    background-color: $cor-card;
+    padding: 30px;
+    border-radius: 4px;
+    border: 1px solid $cor-borda;
+    position: relative;
+    overflow: hidden;
+
+    .fita-estrela {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      background-color: $cor-vermelho;
+      width: 60px;
+      height: 60px;
+      transform: rotate(45deg);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 5px;
+
+      mat-icon {
+        color: white;
+        font-size: 16px;
+        transform: rotate(-45deg);
+      }
+    }
+
+    .label-plano {
+      color: $cor-texto-branco;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .nome-plano {
+      color: $cor-vermelho;
+      font-size: 1.4rem;
+      font-weight: 900;
+      font-style: italic;
+      margin: 10px 0 15px 0;
+    }
+
+    .preco-area {
+      display: flex;
+      align-items: baseline;
+      margin-bottom: 30px;
+      color: white;
+
+      .moeda { font-size: 1.5rem; font-weight: bold; margin-right: 5px; }
+      .valor { font-size: 2.5rem; font-weight: 900; }
+      .mes { font-size: 0.9rem; color: $cor-texto-cinza; margin-left: 5px; }
+    }
+
+    .detalhes-fatura {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .linha-detalhe {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .label {
+          color: $cor-texto-cinza;
+          font-size: 0.85rem;
+          line-height: 1.3;
+        }
+        .dado {
+          color: white;
+          font-weight: bold;
+          font-size: 0.9rem;
+          text-align: right;
+          line-height: 1.3;
+        }
+      }
+    }
+  }
+
+  .btn-acao-lateral {
+    background-color: transparent;
+    color: white;
+    border: 1px solid $cor-borda;
+    padding: 18px 20px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    mat-icon {
+      color: $cor-vermelho;
+    }
+
+    &:hover {
+      border-color: $cor-vermelho;
+      background-color: rgba(227, 6, 19, 0.05);
+    }
+  }
+}
+
+.col-direita {
+  background-color: $cor-card;
+  border: 1px solid $cor-borda;
+  border-radius: 4px;
+  padding: 30px;
+
+  .header-vantagens {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+
+    .titulo-vantagens {
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: 900;
+      font-style: italic;
+    }
+
+    .badge-tier {
+      background-color: #333;
+      color: $cor-texto-cinza;
+      padding: 6px 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      border-radius: 2px;
+    }
+  }
+
+  .grid-vantagens {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    .card-vantagem {
+      background-color: rgba(255, 255, 255, 0.02);
+      border: 1px solid $cor-borda;
+      padding: 25px;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+
+      &:hover {
+        border-color: rgba(227, 6, 19, 0.4);
+      }
+
+      .icone-destaque {
+        background-color: rgba(227, 6, 19, 0.15);
+        color: $cor-vermelho;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        margin-bottom: 15px;
+      }
+
+      h4 {
+        margin: 0 0 10px 0;
+        font-size: 1.1rem;
+      }
+
+      p {
+        margin: 0;
+        color: $cor-texto-cinza;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        position: relative;
+        z-index: 2;
+      }
+
+      .icone-fundo {
+        position: absolute;
+        right: -10px;
+        bottom: -10px;
+        font-size: 100px;
+        width: 100px;
+        height: 100px;
+        color: white;
+        opacity: 0.02;
+        z-index: 1;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.banner-loja {
+  background-color: $cor-card;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid $cor-borda;
+  
+  background-image: linear-gradient(to right, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.3)), url('/assets/jec-krona-futsal.jpg');
+  background-size: cover;
+  background-position: center;
+
+  .banner-conteudo {
+    padding: 40px;
+    position: relative;
+    z-index: 2;
+
+    h2 {
+      margin: 0 0 5px 0;
+      font-size: 1.8rem;
+      font-weight: 900;
+      font-style: italic;
+    }
+
+    p {
+      color: $cor-vermelho;
+      font-weight: bold;
+      font-size: 0.85rem;
+      margin: 0 0 25px 0;
+    }
+
+    .btn-branco {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 12px 24px;
+      font-weight: bold;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover { background-color: #ddd; }
+    }
+  }
+}

@@ -1,104 +1,61 @@
-/* Variáveis de cor para facilitar */
 $cor-fundo: #111111;
 $cor-card: #222222;
 $cor-vermelho: #E20613;
 $cor-texto-claro: #FFFFFF;
 $cor-texto-escuro: #AAAAAA;
 
-.links{
+.links {
   display: flex;
   gap: 20px;
   justify-content: center;
   padding: 30px 20px 1px 15px;
-  background-color: $cor-fundo ;
-}
-
-.coelho{
-    font-size: 30px;
+  background-color: $cor-fundo;
 }
 
 .header-actions {
-    display: flex;
-    gap: 18px; 
-    align-items: center;
+  display: flex;
+  gap: 18px; 
+  align-items: center;
 }
 
-.header-titulo{
-    color: #E30613;
-    font-size: 24px;
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
+.header-titulo {
+  color: $cor-vermelho;
+  font-size: 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
 }
 
 .header-nav {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
+  display: flex;
+  align-items: center;
+  gap: 20px;
 
-.header-nav a {
+  a {
     color: #cccccc;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
+
+    &:hover {
+      color: $cor-vermelho;
+    }
+  }
 }
 
-.header-nav a:hover {
-    color: #E20613;
-}
-.header-button{
-    background-color: #E20613;
-    color: #ffffff;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+.header-button, .botao-cadastro {
+  background-color: $cor-vermelho;
+  color: #ffffff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
 
-.header-button:hover{
+  &:hover {
     background-color: #b30000;
-    cursor: pointer;
-}
-
-.botao-cadastro{
-    background-color: #E20613;
-    color: #ffffff;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.botao-cadastro:hover{
-    background-color: #b30000;
-    cursor: pointer;
-}
-
-.barra-filtros-right button {
-    background-color: transparent;
-    color: #ffffff; 
-    border: 1px solid #333333; /* Borda cinza escuro */
-    padding: 8px 24px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 14px;
-    transition: all 0.3s ease;
-}
-
-/* Efeito ao passar o mouse por cima (opcional, mas fica legal) */
-.barra-filtros-right button:hover {
-    border-color: #E30613;
-    color: #E30613;
-}
-
-.barra-filtros-right button.ativo {
-    color: #E30613; /* Texto vermelho JEC */
-    border: 1px solid #E30613; /* Borda vermelha */
+  }
 }
 
 .painel-agenda {
@@ -138,11 +95,13 @@ $cor-texto-escuro: #AAAAAA;
     border: 1px solid #444;
     padding: 10px 20px;
     font-weight: bold;
+    font-size: 14px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 
     &:hover {
       border-color: $cor-vermelho;
+      color: $cor-vermelho;
     }
 
     &.ativo {
@@ -174,17 +133,18 @@ $cor-texto-escuro: #AAAAAA;
 
 .card-partida {
   background-color: $cor-card;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 20px 40px;
   border-radius: 4px;
+  
+  display: grid;
+  grid-template-columns: 220px 1fr 260px; 
+  align-items: center;
+  gap: 20px;
 }
 
 .col-data {
   display: flex;
   flex-direction: column;
-  min-width: 200px;
 
   .dia {
     color: $cor-vermelho;
@@ -206,23 +166,19 @@ $cor-texto-escuro: #AAAAAA;
   }
 }
 
-/* Coluna Central com Tipografia Forte */
 .col-confronto {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 100px 1fr; 
   align-items: center;
-  gap: 40px;
-  flex-grow: 1;
-  justify-content: center;
+  width: 100%;
+  gap: 15px;
 
   .time {
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 180px; 
-    text-align: center;
 
     .nome-time-destaque {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 900;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -230,10 +186,21 @@ $cor-texto-escuro: #AAAAAA;
     }
   }
 
+  .time-casa {
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  .time-fora {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
   .versus-area {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 5px;
 
     .vs {
@@ -248,6 +215,7 @@ $cor-texto-escuro: #AAAAAA;
       color: #fff;
       font-style: normal;
       letter-spacing: 3px;
+      white-space: nowrap;
     }
 
     .badge-competicao {
@@ -258,6 +226,7 @@ $cor-texto-escuro: #AAAAAA;
       border-radius: 4px;
       border: 1px solid #444;
       text-transform: uppercase;
+      white-space: nowrap;
     }
   }
 }
@@ -267,7 +236,6 @@ $cor-texto-escuro: #AAAAAA;
   flex-direction: column;
   align-items: flex-end;
   gap: 10px;
-  min-width: 250px;
 
   .btn-acao {
     padding: 12px 30px;
@@ -291,19 +259,20 @@ $cor-texto-escuro: #AAAAAA;
   .transmissao {
     color: $cor-texto-escuro;
     font-size: 0.8rem;
+    text-align: right;
   }
 }
 
-.footer{
-    border-top: 3px outset #E30613;
-    width: 100%;
-    height: 15vh;
+.footer {
+  border-top: 3px outset $cor-vermelho;
+  width: 100%;
+  height: 15vh;
 }
 
-.container-footer{
-    display: flex;
-    flex-direction: column;
-    padding: 10px 0px 20px 0px;
+.container-footer {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0px 20px 0px;
 }
 
 .dados {
@@ -318,30 +287,29 @@ $cor-texto-escuro: #AAAAAA;
   display: flex;
   gap: 55px;
   position: absolute;
-  left: 50%;                     
+  left: 50%;                    
   transform: translateX(-50%);   
-}
 
-.links-footer a{
+  a {
     color: #cccccc;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
+
+    &:hover {
+      color: $cor-vermelho;
+      cursor: pointer;
+    }
+  }
 }
 
-.links-footer a:hover{
-    color:#E30613;
-    cursor: pointer;
-}
+.copy-rights {
+  padding: 20px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 
-.copy-rights{
-    /* Cima  Dir  Baixo Esq */
-    padding: 20px 0px 0px 0px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.copy-rights p{
+  p {
     font-size: 12px;
+  }
 }

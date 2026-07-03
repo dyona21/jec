@@ -1,0 +1,30 @@
+<div class="modalidade-overlay">
+    <div class="modalidade-container">
+        <h2 class="modalidade-titulo">Modalidade de Sócio</h2>
+
+        <form (ngSubmit)="salvar()" class="modalidade-form">
+            <h4 class="modalidade-subtitulo">Você deseja trocar de modalidade?</h4>
+
+            <label class="modalidade-label">
+                Modalidade Atual:
+                <input class="modalidade-input" [(ngModel)]="dados.plano.nome_plano" type="text" name="planoAtual">
+            </label>
+
+            <label class="modalidade-label">
+                Modalidade Futura:
+                <select class="modalidade-input" [(ngModel)]="model.nomePlano" name="planoFuturo">
+
+                    <option *ngFor="let plano of planosDisponiveis" [value]="plano">
+                        {{ plano }}
+                    </option>
+
+                </select>
+            </label>
+
+            <div class="modalidade-botoes">
+                <button class="botao-enviar" type="submit">Enviar</button>
+                <button class="botao-fechar" type="button" (click)="fecharModal()">Fechar</button>
+            </div>
+        </form>
+    </div>
+</div>

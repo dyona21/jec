@@ -3,4 +3,6 @@ export class PlanoSocio {
     nomePlano: string;
     valor: number;
     beneficios: string;
+    vantagens: string;
+    pagamento: string;
 }

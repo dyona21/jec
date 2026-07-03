@@ -8,7 +8,7 @@ import { Atleta } from 'src/app/public/models/atleta';
 }) export class AtletaService {
     constructor(private http: HttpClient) { }
 
-    urlApi = 'http://localhost:4200/api/v1/atletas/';
+    urlApi = 'http://localhost:8000/api/v1/atletas/';
 
     buscarAtletas(): Observable<Atleta[]> {
         return this.http.get<Atleta[]>(`${this.urlApi}`);
@@ -18,16 +18,17 @@ import { Atleta } from 'src/app/public/models/atleta';
         return this.http.get<Atleta>(`${this.urlApi}`);
     }
 
-    deletarAtleta(): Observable<void> {
-        return this.http.delete<void>(`${this.urlApi}`);
+    deletarAtleta(iAtleta: number): Observable<void> {
+        return this.http.delete<void>(`${this.urlApi}${iAtleta}`);
     }
 
-    salvarAtleta(atleta: Atleta): Observable<Atleta> {
-        return this.http.post<Atleta>(`${this.urlApi}`, atleta);
+    salvarAtleta(atleta: any): Observable<any> {
+        return this.http.post<any>(`${this.urlApi}`, atleta);
     }
 
-    editarAtleta(iAtleta: number, atleta: Atleta): Observable<Atleta> {
+    editarAtleta(iAtleta: number, atleta: any): Observable<Atleta> {
         return this.http.put<Atleta>(`${this.urlApi}${iAtleta}`, atleta);
     }
+
 
 }

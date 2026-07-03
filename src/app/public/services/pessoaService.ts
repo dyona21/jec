@@ -9,18 +9,22 @@ import { HttpClient } from '@angular/common/http';
 
     constructor(private http: HttpClient) { }
 
-    urlAPi = 'http://localhost:4200/api/v1/pessoas/';
+    urlAPi = 'http://localhost:8000/api/v1/pessoas/';
 
     buscarPessoas(): Observable<Pessoa[]> {
         return this.http.get<Pessoa[]>(`${this.urlAPi}`);
     }
 
     buscarPessoa(iPessoa: number): Observable<Pessoa> {
-        return this.http.get<Pessoa>(`${this.urlAPi}${iPessoa}`);
+        return this.http.get<Pessoa>(`${this.urlAPi}/${iPessoa}`);
     }
 
-    salvarPessoa(pessoa: Pessoa): Observable<Pessoa> {
-        return this.http.post<Pessoa>(`${this.urlAPi}`, pessoa);
+    salvarPessoaSocio(pessoa: any): Observable<any> {
+        return this.http.post<any>(`${this.urlAPi}`, pessoa);
+    }
+
+    salvarPessoaJogador(pessoa: any): Observable<any> {
+        return this.http.post<any>(`${this.urlAPi}jogador`, pessoa);
     }
 
     deletarPessoa(iPessoa: number): Observable<any> {
@@ -29,5 +33,13 @@ import { HttpClient } from '@angular/common/http';
 
     atualizarPessoa(iPessoa: number, pessoa: Pessoa): Observable<Pessoa> {
         return this.http.put<Pessoa>(`${this.urlAPi}${iPessoa}`, pessoa);
+    }
+
+    login(cpfLogin: string, senhaLogin: string): Observable<any> {
+        const login = {
+            cpf: cpfLogin,
+            senha: senhaLogin
+        };
+        return this.http.post(`${this.urlAPi}login`, login);
     }
 }

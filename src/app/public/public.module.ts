@@ -6,12 +6,17 @@ import { InicioComponent } from './inicio/homePage/inicio.component';
 import { CadastroSocioComponent } from './cadastroSocio/cadastro-socio.component';
 import { FormsModule } from '@angular/forms';
 import { MatAutocompleteModule, MatDialogModule, MatFormFieldModule, MatInputModule } from '@angular/material';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './inicio/login/login.component';
 import { ListaJogadoresComponent } from './elenco/listaElenco/lista-jogadores.component';
-import { CadastroJogadorComponent } from './elenco/cadastroJogadores/cadastro-jogador.component';
 import { HttpClientModule } from '@angular/common/http';
 import { IdadePipe } from '../pipes/idade.pipe';
 import { ListaPartidasComponent } from './partidas/lista-partidas/lista-partidas.component';
+import { PatrocinadoresComponent } from './inicio/patrocinadores/patrocinadores.component';
+import { ContatoComponent } from './inicio/contato/contato.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
 @NgModule({
   declarations: [
@@ -19,9 +24,10 @@ import { ListaPartidasComponent } from './partidas/lista-partidas/lista-partidas
     CadastroSocioComponent,
     LoginComponent,
     ListaJogadoresComponent,
-    CadastroJogadorComponent,
     IdadePipe,
-    ListaPartidasComponent
+    ListaPartidasComponent,
+    PatrocinadoresComponent,
+    ContatoComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +38,8 @@ import { ListaPartidasComponent } from './partidas/lista-partidas/lista-partidas
     MatInputModule,
     MatAutocompleteModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMaskModule.forRoot(options)
   ],
   entryComponents: [CadastroSocioComponent, LoginComponent],
   exports: []

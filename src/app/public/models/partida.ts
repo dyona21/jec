@@ -9,4 +9,5 @@ export class Partida {
     golsAdversario: number;
     competicao: Competicao;
     descricao: string;
+    linkLances: string;
 }

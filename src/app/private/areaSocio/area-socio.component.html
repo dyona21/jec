@@ -1,0 +1,108 @@
+<section class="socio-container">
+
+    <div class="header-nav" *ngIf="dadosDoSocio?.adm">
+        <a routerLink="/area-socio/jogadores">Gerenciar Elenco</a>
+        <a routerLink="/area-socio/jogos">Gerenciar Jogos</a>
+    </div>
+
+    <header class="perfil-card">
+
+        <button class="btn-sair" (click)="sair()">
+            Sair <mat-icon>exit_to_app</mat-icon>
+        </button>
+
+        <div class="perfil-info-wrapper">
+            <div class="foto-box">
+                <ng-container *ngIf="!!atleta">
+                    <img [src]="atleta?.foto" alt="Foto do Sócio">
+                </ng-container>
+            </div>
+            <div class="dados-socio">
+                <h1 class="nome-socio">{{ dadosDoSocio?.nome | uppercase }}</h1>
+                <span class="id-socio">CPF: {{ dadosDoSocio?.cpf }}</span>
+            </div>
+        </div>
+
+        <div class="marca-dagua">JEC</div>
+    </header>
+
+    <div class="dashboard-grid">
+
+        <aside class="col-esquerda">
+
+            <div class="card-plano">
+                <div class="fita-estrela"><mat-icon>star</mat-icon></div>
+
+                <span class="label-plano">MEU PLANO ATUAL</span>
+                <h2 class="nome-plano">{{ plano.nome_plano | uppercase }}</h2>
+                <div class="preco-area">
+                    <span class="moeda">R$</span>
+                    <span class="valor">{{plano?.valor}}</span>
+                    <span class="mes">/mês</span>
+                </div>
+
+                <div class="detalhes-fatura">
+                    <div class="linha-detalhe">
+                        <span class="label">Forma de<br>Pagamento</span>
+                        <span class="dado">{{plano?.forma_pagamento}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-acao-lateral" (click)="abrirModalModalidadeSocio()">
+                Alterar Plano <mat-icon>arrow_forward</mat-icon>
+            </button>
+        </aside>
+
+        <main class="col-direita">
+
+            <div class="header-vantagens">
+                <h3 class="titulo-vantagens">VANTAGENS EXCLUSIVAS</h3>
+            </div>
+
+            <div class="grid-vantagens">
+
+                <div class="card-vantagem">
+                    <div class="icone-destaque"><mat-icon>confirmation_number</mat-icon></div>
+                    <h4>Acesso Total</h4>
+                    <p>100% de desconto em ingressos para todos os jogos em casa na temporada.</p>
+                    <mat-icon class="icone-fundo">confirmation_number</mat-icon>
+                </div>
+
+                <div class="card-vantagem">
+                    <div class="icone-destaque"><mat-icon>shopping_bag</mat-icon></div>
+                    <h4>Loja Oficial</h4>
+                    <p>{{plano?.vantagens}}</p>
+                    <mat-icon class="icone-fundo">shopping_bag</mat-icon>
+                </div>
+
+                <div class="card-vantagem">
+                    <div class="icone-destaque"><mat-icon>event_seat</mat-icon></div>
+                    <h4>Assentos</h4>
+                    <p>{{plano?.beneficios}}</p>
+                    <mat-icon class="icone-fundo">event_seat</mat-icon>
+                </div>
+
+                <div class="card-vantagem">
+                    <div class="icone-destaque"><mat-icon>groups</mat-icon></div>
+                    <h4>Rede de Parceiros</h4>
+                    <p>Descontos em mais de 50 estabelecimentos parceiros em Joinville.</p>
+                    <mat-icon class="icone-fundo">groups</mat-icon>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+    <div class="banner-loja">
+        <div class="banner-conteudo">
+            <h2>SÓCIO MERECE O MELHOR</h2>
+            <p>CONFIRA OS NOVOS MANTOS NA JEC STORE COM SEU DESCONTO EXCLUSIVO</p>
+            <a href="https://www.lojadojec.com.br/" target="_blank" rel="noopener noreferrer">
+                <button class="btn-branco">IR PARA LOJA</button>
+            </a>
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,61 @@
+<div class="modal-dark-container">
+    <h2 class="titulo-modal">NOVA PARTIDA</h2>
+
+    <form class="form-partida" #partidaForm="ngForm">
+
+        <div class="grid-inputs">
+            <label>
+                Adversário:
+                <input type="text" name="adversario" [(ngModel)]="model.adversario" placeholder="Ex: Corinthians">
+            </label>
+
+            <label>
+                Data e Hora:
+                <input type="datetime-local" name="dataHora" [(ngModel)]="model.dataHora">
+            </label>
+
+            <label>
+                Local:
+                <input type="text" name="local" [(ngModel)]="model.local" placeholder="Ex: Centreventos Cau Hansen">
+            </label>
+
+            <label class="modalidade-label">
+                Competição:
+                <select [(ngModel)]="competicao" name="competicao">
+                    <option *ngFor="let competicao of competicoes" [value]="competicao">
+                        {{ competicao }}
+                    </option>
+
+                </select>
+            </label>
+
+            <label>
+                Gols do JEC:
+                <input type="text" name="golsJec" [(ngModel)]="model.golsJec" min="0">
+            </label>
+
+            <label>
+                Gols do Adversário:
+                <input type="text" name="golsAdversa" [(ngModel)]="model.golsAdversario" min="0">
+            </label>
+        </div>
+
+        <label class="label-full">
+            Link dos Lances (YouTube):
+            <input type="text" name="link" [(ngModel)]="model.linkLances" placeholder="https://youtube.com/...">
+        </label>
+
+        <label>
+            Descrição:
+            <input type="text" name="descr" [(ngModel)]="model.descricao" placeholder="Descrição...">
+        </label>
+
+
+        <div class="botoes-acao">
+            <button class="btn-salvar" type="button" (click)="salvar()" [disabled]="!partidaForm.valid">Confirmar
+                Cadastro</button>
+            <button class="btn-salvar" type="button" mat-dialog-close>Fechar</button>
+        </div>
+
+    </form>
+</div>

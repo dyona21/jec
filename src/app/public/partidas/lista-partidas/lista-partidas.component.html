@@ -48,7 +48,10 @@
                         <span class="vs" *ngIf="partida.gols_jec === 0 && partida.gols_adversa === 0">
                             VS
                         </span>
-                        <span class="badge-competicao">{{ partida.competicao_nome }}</span>
+
+                        <span class="badge-competicao" *ngIf="partida.competicao?.nomeCompeticao">
+                            {{ partida.competicao?.nomeCompeticao }}
+                        </span>
                     </div>
 
                     <div class="time time-fora">
@@ -57,7 +60,9 @@
                 </div>
 
                 <div class="col-acao">
-                    <button class="btn-acao btn-aviso">VER DETALHES</button>
+                    <a [href]="partida.link_dos_lances" target="_blank">
+                        <button class="btn-acao btn-aviso">VER DETALHES</button>
+                    </a>
                     <span class="transmissao">{{ partida.descricao }}</span>
                 </div>
 

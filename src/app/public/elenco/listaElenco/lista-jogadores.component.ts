@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Atleta } from '../../models/atleta';
 import { AtletaService } from '../../services/atletaService';
-import { LowerCasePipe } from '@angular/common';
 
 @Component({
     selector: 'app-lista-jogadores',
@@ -31,14 +30,13 @@ import { LowerCasePipe } from '@angular/common';
             };
 
             const listaOrdenada = pagina.sort((a, b) => {
-                const pesoA = ordemTatica[a.posicao.toLowerCase()] || 99; // 99 se a posição não existir
+                const pesoA = ordemTatica[a.posicao.toLowerCase()] || 99;
                 const pesoB = ordemTatica[b.posicao.toLowerCase()] || 99;
 
                 return pesoA - pesoB;
             });
             this.listaJogadores = listaOrdenada;
             this.jogadoresExibidos = this.listaJogadores;
-
         };
 
         const error = (err) => {
@@ -56,7 +54,6 @@ import { LowerCasePipe } from '@angular/common';
             return;
         }
 
-        // 3. O nosso Dicionário de Tradução (Botão -> Banco de Dados)
         const mapaDePosicoes: any = {
             GOLEIROS: 'goleiro',
             FIXOS: 'fixo',
@@ -64,12 +61,9 @@ import { LowerCasePipe } from '@angular/common';
             PIVÔS: 'pivo',
         };
 
-        // Pega a tradução correta
         const termoExato = mapaDePosicoes[posicaoBuscada];
 
-        // 4. Filtra a lista com segurança
         this.jogadoresExibidos = this.listaJogadores.filter(jogador => {
-            // O jogador.posicao && garante que não vai dar erro se a posição vier vazia
             return jogador.posicao && jogador.posicao.toLowerCase() === termoExato;
         });
     }

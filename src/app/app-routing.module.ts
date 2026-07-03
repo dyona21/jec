@@ -3,7 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', loadChildren: './public/public.module#PublicModule' },
-  { path: 'app', loadChildren: './private/private.module#PrivateModule' }
+  {
+    path: 'area-socio',
+    loadChildren: './private/private.module#PrivateModule'
+  }
 ];
 
 @NgModule({

@@ -1,0 +1,85 @@
+<div class="gerenciar-partidas-container">
+
+    <div class="header-nav">
+        <a routerLink="/area-socio">Area Sócio</a>
+    </div>
+
+    <header class="header-topo">
+        <div class="titulos">
+            <span class="subtitulo">PAINEL ADMINISTRATIVO</span>
+            <h1 class="titulo-principal">GERENCIAR PARTIDAS</h1>
+        </div>
+
+        <button class="btn-adicionar" (click)="abrirModalCadastroPartida()">
+            <mat-icon>add_circle_outline</mat-icon>
+            ADICIONAR NOVA PARTIDA
+        </button>
+    </header>
+
+    <table mat-table [dataSource]="dataSource" class="tabela-dark">
+
+        <ng-container matColumnDef="dataHora">
+            <th mat-header-cell *matHeaderCellDef> DATA E HORA </th>
+            <td mat-cell *matCellDef="let partida">
+                <div class="data-hora-celula">
+                    <strong class="data">{{ partida.dataHora | date:'dd/MM' }}</strong>
+                    <span class="hora-local">{{ partida.dataHora | date:'HH:mm' }} • {{ partida.local }}</span>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="confronto">
+            <th mat-header-cell *matHeaderCellDef> CONFRONTO </th>
+            <td mat-cell *matCellDef="let partida">
+                <span class="nome-adversario">JEC</span>
+                <span class="nome-adversario"> X </span>
+                <span class="nome-adversario">{{ partida.adversario | uppercase }}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="competicao">
+            <th mat-header-cell *matHeaderCellDef> COMPETIÇÃO </th>
+            <td mat-cell *matCellDef="let partida">
+                <span class="badge-competicao">{{ partida.competicao?.nomeCompeticao | uppercase }}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="placarStatus">
+            <th mat-header-cell *matHeaderCellDef> PLACAR </th>
+            <td mat-cell *matCellDef="let partida">
+                <div class="placar-status-celula">
+                    <span class="placar">{{ partida.golsJec }}</span>
+                    <span class="separador">x</span>
+                    <span class="placar">{{ partida.golsAdversa }}</span>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="links">
+            <th mat-header-cell *matHeaderCellDef> LANCES </th>
+            <td mat-cell *matCellDef="let partida">
+                <a *ngIf="partida.linkDosLances" [href]="partida.linkDosLances" target="_blank" class="link-lances"
+                    title="Ver lances">
+                    <mat-icon>play_circle_outline</mat-icon>
+                </a>
+                <span *ngIf="!partida.linkDosLances" class="sem-lances">—</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acoes">
+            <th mat-header-cell *matHeaderCellDef> AÇÕES </th>
+            <td mat-cell *matCellDef="let partida">
+                <button mat-icon-button class="btn-acao" title="Editar" (click)="editarPartida(partida)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button class="btn-acao" title="Excluir" (click)="excluirPartida(partida)">
+                    <mat-icon>delete_outline</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="colunasExibidas"></tr>
+        <tr mat-row *matRowDef="let row; columns: colunasExibidas;"></tr>
+
+    </table>
+</div>

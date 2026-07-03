@@ -17,8 +17,7 @@
     <label class="form-label">
       CPF:
       <input class="form-input" name="cpf" [(ngModel)]="model.cpf" type="text" placeholder="000.000.000-00"
-        inputmode="numeric" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite o CPF no formato 000.000.000-00"
-        required />
+        mask="000.000.000-00" [dropSpecialCharacters]="true" required />
     </label>
 
     <label class="form-label">
@@ -28,16 +27,15 @@
     </label>
 
     <label class="form-label">
-      Modalidade Sócio:
-      <input class="form-input" name="modalidade" [(ngModel)]="planoSocio" type="text" required list="opcoes-planos"
-        placeholder="Selecione ou digite o plano...">
-      <datalist id="opcoes-planos">
-        <option value="Tradicional"></option>
-        <option value="Gold"></option>
-      </datalist>
+      Modalidade:
+      <select class="form-input" [(ngModel)]="planoSocio" name="plano" required>
+
+        <option *ngFor="let plano of planosDisponiveis" [value]="plano">
+          {{ plano }}
+        </option>
+
+      </select>
     </label>
-
-
 
     <label class="form-label">
       Senha:
@@ -50,4 +48,18 @@
       <button class="botao-fechar" type="button" (click)="fecharModal()">Fechar</button>
     </div>
   </form>
+
+  <!-- <div style="background: #333; color: lime; padding: 10px; margin-top: 20px;">
+    <p><strong>Status Geral do Form:</strong> {{ formulario.valid }}</p>
+
+    <p><strong>Status por Campo:</strong></p>
+    <ul>
+      <li>Nome: {{ formulario.controls['nome']?.valid }}</li>
+      <li>Email: {{ formulario.controls['email']?.valid }}</li>
+      <li>CPF: {{ formulario.controls['cpf']?.valid }}</li>
+      <li>Data Nasc: {{ formulario.controls['dataNascimento']?.valid }}</li>
+      <li>Plano: {{ formulario.controls['plano']?.valid }}</li>
+      <li>Senha: {{ formulario.controls['senha']?.valid }}</li>
+    </ul>
+  </div> -->
 </div>

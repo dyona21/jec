@@ -1,0 +1,59 @@
+<div class="cadastro-container">
+    <h2 class="cadastro-titulo">Cadastro de Jogador</h2>
+
+    <form class="cadastro-form" (ngSubmit)="salvar()" #formulario="ngForm">
+        <label class="form-label">
+            Nome:
+            <input class="form-input" name="nome" [(ngModel)]="model.pessoa.nome" type="text"
+                placeholder="Nome atelta..." title="Digite o nome do atleta" required />
+        </label>
+        <ng-container *ngIf="!dados">
+            <label class="form-label">
+                CPF:
+                <input class="form-input" name="cpf" [(ngModel)]="model.pessoa.cpf" type="text"
+                    placeholder="000.000.000-00" mask="000.000.000-00" [dropSpecialCharacters]="true" required />
+            </label>
+        </ng-container>
+
+        <label class="form-label">
+            Data Nascimento:
+            <input class="form-input" name="dataNascimento" [(ngModel)]="model.pessoa.dataNascimento" type="date"
+                title="Sua data de nascimento" required />
+        </label>
+
+        <label class="form-label">
+            Posição:
+            <input class="form-input" name="posicao" [(ngModel)]="model.posicao" placeholder="Posição..."
+                title="Digite a posição aqui." required />
+        </label>
+
+        <label class="form-label">
+            Número Gols:
+            <input class="form-input" name="numeroGols" [(ngModel)]="model.numeroGols" type="text" min="0"
+                placeholder="Gols..." title="Digite os gols aqui." required />
+        </label>
+
+        <label class="form-label">
+            Número Partidas:
+            <input class="form-input" name="numeroPartidas" [(ngModel)]="model.numeroPartidas" type="text" min="0"
+                placeholder="Partidas..." title="Digite o número de partidas." required />
+        </label>
+
+        <label class="form-label">
+            Foto:
+            <input class="form-input form-input--file" name="foto" type="file" accept="image/*"
+                (change)="onFotoSelecionada($event)" title="Selecione a foto do jogador" />
+        </label>
+
+        <div class="foto-preview" *ngIf="model.foto">
+            <img [src]="model.foto" alt="Prévia da foto do jogador" />
+        </div>
+
+        <div class="botoes">
+            <button class="botao-enviar" type="submit" [disabled]="!formulario.valid || salvando">
+                {{ salvando ? 'Salvando...' : 'Confirmar Cadastro' }}
+            </button>
+            <button class="botao-enviar" type="button" (click)="fecharModal()">Fechar</button>
+        </div>
+    </form>
+</div>
