@@ -69,7 +69,6 @@ export class ListaAdmPartidasComponent implements OnInit {
     }
 
     excluirPartida(partida: Partida) {
-        console.log(partida, 'ppa');
         const iPartida = partida.iPartida ? partida.iPartida : null;
 
         if (!iPartida) { return; }

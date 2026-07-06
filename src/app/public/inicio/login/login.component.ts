@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
     buscaSocios() {
         const next = (retorno) => {
             if (retorno) {
-                console.log('retorno', retorno);
                 this.listaSocios = retorno;
             }
         };
@@ -68,12 +67,12 @@ export class LoginComponent implements OnInit {
                 localStorage.setItem('socioLogado', JSON.stringify(retorno.pessoa));
                 this.router.navigate(['/area-socio']).then(liberado => {
                     if (liberado) {
-                        console.log('✅ Rota liberada! A URL deve mudar agora.');
+                        console.warn('Login efetuado.');
                     } else {
-                        console.warn('⛔ O Angular bloqueou a viagem silenciosamente!');
+                        console.warn('O Angular bloqueou a viagem silenciosamente!');
                     }
                 }).catch(erro => {
-                    console.error('❌ Erro grave ao tentar abrir a rota:', erro);
+                    console.error('Erro grave ao tentar abrir a rota:', erro);
                 });
             } else {
                 this.mensagemErro = 'Erro encontrado';

@@ -64,7 +64,6 @@ import { PlanoSocioService } from '../service/plano-socio.service';
 
     buscarDadosDoPlano(iPlano: number) {
         this.planoSocioService.buscarPlano(iPlano).subscribe((retorno) => {
-            console.log(retorno);
             this.plano.nomePlano = retorno.nome_plano;
             this.plano.pagamento = retorno.forma_pagamento;
             this.plano.beneficios = retorno.beneficio;

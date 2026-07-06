@@ -26,7 +26,6 @@ export class CadastroJogadorComponent implements OnInit {
     ngOnInit(): void {
         this.inicializar();
         if (this.dados) {
-            console.log(this.dados);
             this.editar();
         }
     }
@@ -83,7 +82,6 @@ export class CadastroJogadorComponent implements OnInit {
             };
 
             const next = (retorno) => {
-                console.log(retorno);
                 this.salvando = false;
                 this.dialogRef.close({ alterou: true });
             };
@@ -94,7 +92,6 @@ export class CadastroJogadorComponent implements OnInit {
             };
 
             if (this.ehEdicao) {
-                console.log(' he');
                 this.atletaService.editarAtleta(iAtleta, atleta).subscribe(next, err);
             } else {
                 this.atletaService.salvarAtleta(atleta).subscribe(next, err);

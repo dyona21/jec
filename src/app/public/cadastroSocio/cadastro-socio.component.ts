@@ -57,7 +57,6 @@ export class CadastroSocioComponent implements OnInit {
         };
 
         const next = (retorno) => {
-            console.log(retorno);
             this.fecharModal();
         };
 

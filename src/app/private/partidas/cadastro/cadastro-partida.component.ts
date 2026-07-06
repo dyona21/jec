@@ -31,7 +31,6 @@ import { Competicao } from 'src/app/public/models/competicao';
     }
 
     editaDados() {
-        console.log(this.dados);
         this.model.adversario = this.dados.adversario;
         this.model.iPartida = this.dados.iPartida;
         this.model.dataHora = this.dados.dataHora;
@@ -63,7 +62,6 @@ import { Competicao } from 'src/app/public/models/competicao';
         this.verificaCompeticao();
 
         const next = (retorno) => {
-            console.log(retorno);
             this.dialogRef.close({
                 alterou: true
             });

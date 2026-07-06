@@ -33,7 +33,6 @@ import { SocioService } from '../service/socio.service';
 
     atribuirDados() {
         if (!this.dados) { return; }
-        console.log(this.dados.id);
         this.socio.iPessoa = this.dados.id;
         this.iPlanoAtual = this.dados.idPlano;
     }

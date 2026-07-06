@@ -88,7 +88,6 @@ import { CadastroJogadorComponent } from '../cadastro/cadastro.jogador.component
     }
 
     excluirAtleta(a: any) {
-        console.log(a);
         const iAtleta = a.id_pessoa ? a.id_pessoa : null;
 
         if (!iAtleta) { return; }
