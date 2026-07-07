@@ -14,6 +14,7 @@ import { ListaPartidasComponent } from './partidas/lista-partidas/lista-partidas
 import { PatrocinadoresComponent } from './inicio/patrocinadores/patrocinadores.component';
 import { ContatoComponent } from './inicio/contato/contato.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { InformacoesSocioComponent } from './socio/informacoes-socio.component';
 
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
@@ -27,7 +28,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     IdadePipe,
     ListaPartidasComponent,
     PatrocinadoresComponent,
-    ContatoComponent
+    ContatoComponent,
+    InformacoesSocioComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     HttpClientModule,
     NgxMaskModule.forRoot(options)
   ],
-  entryComponents: [CadastroSocioComponent, LoginComponent],
+  entryComponents: [CadastroSocioComponent, LoginComponent, InformacoesSocioComponent],
   exports: []
 })
 export class PublicModule { }

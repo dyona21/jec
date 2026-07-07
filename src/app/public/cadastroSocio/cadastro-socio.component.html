@@ -27,13 +27,17 @@
     </label>
 
     <label class="form-label">
-      Modalidade:
-      <select class="form-input" [(ngModel)]="planoSocio" name="plano" required>
+      <div class="cabecalho-label">
+        <span>Modalidade:</span>
+        <button class="btn-ajuda" (click)="abrirTelaAjuda()" type="button" matTooltip="Ajuda">
+          <mat-icon>help</mat-icon>
+        </button>
+      </div>
 
+      <select class="form-input" [(ngModel)]="planoSocio" name="plano" required>
         <option *ngFor="let plano of planosDisponiveis" [value]="plano">
           {{ plano }}
         </option>
-
       </select>
     </label>
 

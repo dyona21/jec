@@ -1,0 +1,145 @@
+.socio-container {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    border-top: 4px solid #e60000; /* Detalhe com o vermelho principal */
+    max-width: 800px;
+    width: 100%;
+    box-sizing: border-box;
+
+    .titulo-planos {
+        text-align: center;
+        font-size: 22px;
+        font-style: italic;
+        font-weight: 900;
+        margin-top: 0;
+        margin-bottom: 30px;
+        color: #ffffff;
+    }
+
+    /* Coloca os planos lado a lado */
+    .cards-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .plano-card {
+        background-color: #111111;
+        border: 1px solid #333333;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s;
+
+        &:hover {
+            transform: translateY(-5px); /* Efeito sutil ao passar o mouse */
+        }
+
+        /* O Platina ganha uma borda e sombra vermelha para destacar */
+        &.destaque {
+            border-color: #e60000;
+            box-shadow: 0 4px 20px rgba(230, 0, 0, 0.15);
+        }
+    }
+
+    .cabecalho-card {
+        padding: 20px;
+        text-align: center;
+        border-bottom: 1px solid #333333;
+
+        h4 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        &.gold h4 {
+            color: #ffd700; /* Dourado */
+        }
+
+        &.platina h4 {
+            color: #e5e4e2; /* Prata/Platina */
+        }
+    }
+
+    .beneficios-lista {
+        list-style: none;
+        padding: 20px;
+        margin: 0;
+        flex-grow: 1; /* Faz a lista empurrar o rodapé de pagamento para baixo */
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        li {
+            font-size: 14px;
+            color: #cccccc;
+            position: relative;
+            padding-left: 25px;
+            line-height: 1.4;
+
+            /* Ícone de "Certo" via CSS em todos os itens */
+            &::before {
+                content: '✓';
+                position: absolute;
+                left: 0;
+                color: #4caf50; // Verde
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+            /* Estilo para itens não inclusos no plano */
+            &.inativo {
+                color: #555555;
+                text-decoration: line-through;
+                
+                &::before {
+                    content: '✗';
+                    color: #555555;
+                }
+            }
+
+            /* Separa a forma de pagamento do resto da lista */
+            &.pagamento {
+                margin-top: auto;
+                padding-top: 20px;
+                border-top: 1px dashed #333333;
+                
+                &::before {
+                    content: '💳'; /* Emoji ou ícone de pagamento */
+                    filter: grayscale(100%);
+                }
+                
+                strong {
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+
+    .acoes-modal {
+        display: flex;
+        justify-content: center;
+
+        .botao-fechar {
+            padding: 12px 35px;
+            font-weight: 700;
+            background-color: transparent;
+            color: #888888;
+            border: 1px solid #555555;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-transform: uppercase;
+
+            &:hover {
+                color: #ffffff;
+                border-color: #888888;
+            }
+        }
+    }
+}

@@ -3,8 +3,10 @@ import { FormControl, NgForm } from '@angular/forms';
 import { Pessoa } from '../models/pessoa';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
-import { MatDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { PessoaService } from '../services/pessoaService';
+import { NavegarService } from 'src/app/core/services/navegar-service';
+import { InformacoesSocioComponent } from '../socio/informacoes-socio.component';
 
 
 @Component({
@@ -24,7 +26,9 @@ export class CadastroSocioComponent implements OnInit {
 
     constructor(
         private dialogRef: MatDialogRef<CadastroSocioComponent>,
-        private pessoaService: PessoaService
+        private pessoaService: PessoaService,
+        private navegarService: NavegarService,
+        private localDialog: MatDialog
     ) { }
 
     ngOnInit(): void {
@@ -68,6 +72,16 @@ export class CadastroSocioComponent implements OnInit {
 
     fecharModal() {
         this.dialogRef.close();
+    }
+
+    abrirTelaAjuda() {
+        this.navegarService.abrirModal(
+            InformacoesSocioComponent,
+            null,
+            null,
+            '',
+            this.localDialog
+        );
     }
 
 }
